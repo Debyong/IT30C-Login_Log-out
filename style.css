@@ -1,33 +1,184 @@
-body {
-          font-family: Arial, sans-serif;
-          max-width: 400px;
-          margin: 50px auto;
-          padding: 20px;
-        }
-        h1 {
-            text-align: center;
-        }
-        h2 {
-            text-align: center;
-        }
-        
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            box-sizing: border-box;
-        }
-        
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        
-        button:hover {
-            background-color: #45a049;
+/* Optional: loads the Poppins font (page still works offline — it falls back to system fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", "Segoe UI", -apple-system, Arial, sans-serif;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f4c81 0%, #0099f1 55%, #38bdf8 100%);
+}
+
+/* Floating decorative circles in the background */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    z-index: 0;
+}
+
+body::before {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -120px;
+}
+
+body::after {
+    width: 520px;
+    height: 520px;
+    bottom: -180px;
+    right: -160px;
+}
+
+/* ============ Card ============ */
+.login-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.97);
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 35px;
+    border-radius: 18px;
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.25),
+        0 4px 12px rgba(0, 0, 0, 0.12);
+    animation: fadeInUp 0.5s ease both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    text-align: center;
+    color: #1e293b;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+}
+
+/* ============ Form ============ */
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: #475569;
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    font-size: 15px;
+    font-family: inherit;
+    color: #1e293b;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #0099f1;
+    box-shadow: 0 0 0 4px rgba(0, 153, 241, 0.15);
+}
+
+/* ============ Buttons ============ */
+button,
+.btn-link {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #0099f1 0%, #0072d4 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15.5px;
+    font-weight: 600;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 6px 16px rgba(0, 153, 241, 0.35);
+    transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+
+button:hover,
+.btn-link:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(0, 153, 241, 0.45);
+    filter: brightness(1.05);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 153, 241, 0.35);
+}
+
+/* ============ Footer link ============ */
+.register-link {
+    text-align: center;
+    margin-top: 22px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.register-link a {
+    color: #0099f1;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.register-link a:hover {
+    color: #0072d4;
+    text-decoration: underline;
+}
+
+/* ============ Alerts ============ */
+.alert {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.alert-error {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.alert-success {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+}
